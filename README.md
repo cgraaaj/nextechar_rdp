@@ -55,6 +55,6 @@ Create a common network in docker, which acts as a brige to make the client serv
 Run the docker image as intructed below on your local
 
 - Client
-  - `docker run -d --name client --network=rdp raju6713/rdp_frontend:amd64`
+  - `docker run -d --name client --network=rdp raju6713/rdp-frontend:amd64`
 
 **_NOTE:_** Please make sure no other containers running on the name client on your docker network
