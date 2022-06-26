@@ -1,8 +1,10 @@
 FROM node:alpine
+ARG JPH_API
 WORKDIR /app
 COPY package.json .
 RUN npm install
 COPY . ./
+ENV REACT_APP_JPH_API ${JPH_API}
 RUN npm run build
 
 FROM nginx
