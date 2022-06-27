@@ -37,9 +37,10 @@ class App extends React.Component {
         <ToastContainer />
         <Router>
           <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" index element={<Login />} />
             <Route element={<ProctedRoute isAuth={this.props.isSignedIn} />}>
-              <Route element={<Dashboard />}>
+              <Route path="/" element={<Dashboard />}>
+                <Route index element={<Users />} />
                 <Route path="/users" element={<Users />} />
                 <Route path="/photos" element={<Photos />} />
               </Route>
