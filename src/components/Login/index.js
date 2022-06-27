@@ -4,9 +4,18 @@ import _ from 'lodash';
 import { login } from '../../actions';
 import { Form, Field, FormSpy } from 'react-final-form';
 import { Button, Checkbox } from 'semantic-ui-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 class Login extends React.Component {
   componentDidMount() {}
+
+  componentDidUpdate() {
+    if (this.props.isSignedIn) {
+      this.props.navigate(
+        this.props.location.state?.from?.pathname || '/users'
+      );
+    }
+  }
 
   onLogIn = (values) => {
     this.props.login(values);
@@ -129,10 +138,16 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    initialValues: {},
+    isSignedIn: state.auth.isSignedIn,
   };
 };
 
+function LoginWithNavigate(props) {
+  let navigate = useNavigate();
+  let location = useLocation();
+  return <Login {...props} navigate={navigate} location={location} />;
+}
+
 export default connect(mapStateToProps, {
   login,
-})(Login);
+})(LoginWithNavigate);

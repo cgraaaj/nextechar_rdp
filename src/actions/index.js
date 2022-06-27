@@ -8,7 +8,6 @@ import {
   GET_PHOTOS,
   SET_TOAST,
 } from './types';
-import history from '../history';
 
 const onError = (dispatch, err) => {
   if (err.response) {
@@ -17,7 +16,6 @@ const onError = (dispatch, err) => {
         type: LOG_OUT,
         payload: {},
       });
-      history.push('/login');
     }
   }
   if (err.message) {
@@ -41,15 +39,12 @@ export const login = (credentials) => async (dispatch) => {
     } else {
       throw new Error('User not found');
     }
-
-    history.push('/');
   } catch (err) {
     onError(dispatch, err);
   }
 };
 
 export const logout = () => async (dispatch) => {
-  history.push('/login');
   dispatch({
     type: LOG_OUT,
     payload: {},

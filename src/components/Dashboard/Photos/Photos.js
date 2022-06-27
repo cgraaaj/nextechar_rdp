@@ -17,11 +17,11 @@ class Photos extends React.Component {
   renderImage() {
     return this.props.photos.map((photo) => (
       <div className="ui segment" key={photo.id}>
-        <div class="ui one column grid">
-          <div class="ui card">
+        <div className="ui one column grid">
+          <div className="ui card">
             <img src={`${photo.thumbnailUrl}`} />
             {/* <LazyImage thumbnailUrl={photo.thumbnailUrl} src={photo.url} /> */}
-            <div class="content">{photo.title}</div>
+            <div className="content">{photo.title}</div>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { logout, onClickHamburger } from '../actions';
+import { logout, onClickHamburger } from '../../actions';
 import { connect } from 'react-redux';
 
 class Header extends React.Component {

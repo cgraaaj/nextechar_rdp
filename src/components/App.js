@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Router, Redirect } from 'react-router-dom';
-import Header from './Header';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import history from '../history';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import Users from './Dashboard/Users/Users';
 import Photos from './Dashboard/Photos/Photos';
+import ProctedRoute from './ProctedRoute';
 
 class App extends React.Component {
   componentDidMount() {}
@@ -36,15 +35,16 @@ class App extends React.Component {
     return (
       <div className="ui container" style={{ width: '98%' }}>
         <ToastContainer />
-        <Router history={history}>
-          {this.props.isSignedIn ? (
-            <div>
-              <Header />
-              <Dashboard />
-            </div>
-          ) : (
-            <Login />
-          )}
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route element={<ProctedRoute isAuth={this.props.isSignedIn} />}>
+              <Route element={<Dashboard />}>
+                <Route path="/users" element={<Users />} />
+                <Route path="/photos" element={<Photos />} />
+              </Route>
+            </Route>
+          </Routes>
         </Router>
       </div>
     );
