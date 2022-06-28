@@ -142,11 +142,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-function LoginWithNavigate(props) {
+const LoginWithNavigate = (props) => {
   let navigate = useNavigate();
   let location = useLocation();
   return <Login {...props} navigate={navigate} location={location} />;
-}
+};
 
 export default connect(mapStateToProps, {
   login,
