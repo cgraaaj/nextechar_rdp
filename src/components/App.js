@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import * as Sentry from "@sentry/react"
+
 
 import Login from './Login';
 import Dashboard from './Dashboard';
@@ -60,4 +62,4 @@ const mapStatetoProps = (state) => {
   };
 };
 
-export default connect(mapStatetoProps)(App);
+export default connect(mapStatetoProps)( Sentry.withProfiler(App));

@@ -19,7 +19,7 @@ class Photos extends React.Component {
       <div className="ui segment" key={photo.id}>
         <div className="ui one column grid">
           <div className="ui card">
-            <img src={`${photo.thumbnailUrl}`} />
+            <img src={`${photo.url}`} />
             {/* <LazyImage thumbnailUrl={photo.thumbnailUrl} src={photo.url} /> */}
             <div className="content">{photo.title}</div>
           </div>
